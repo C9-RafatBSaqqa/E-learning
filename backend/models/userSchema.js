@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const bcrypt = require('bcrypt')
 
 const userModel = new mongoose.Schema({
    name : {type: String, required : true },
@@ -9,6 +9,16 @@ const userModel = new mongoose.Schema({
    age : {type: Number},
    country : {type: String},
    role : {type:mongoose.Schema.Types.ObjectId,ref:'Role'},
+})
+
+userModel.pre('save', async function() {
+   this.email = this.email.toLowerCase()
+   try {
+      this.password = await bcrypt.hash(this.password,7)
+   } catch (error) {
+      console.log(error);
+   }
+  
 })
 
 
