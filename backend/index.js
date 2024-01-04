@@ -9,7 +9,8 @@ const userRouter = require('./routes/user')
 app.use('/user',userRouter)
 const roleRouter = require('./routes/role')
 app.use('/role',roleRouter)
-
+const courseRouter = require('./routes/course')
+app.use('/course',courseRouter)
 
 
 
