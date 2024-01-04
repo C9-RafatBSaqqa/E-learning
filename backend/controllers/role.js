@@ -2,7 +2,7 @@ const roleModel = require('../models/roleSchema')
 
 
 
-// add New Role function 1
+// This function add New Role 
 const addNewRole = (req, res) => {
     const { role, permissions } = req.body
     const newRole = roleModel({

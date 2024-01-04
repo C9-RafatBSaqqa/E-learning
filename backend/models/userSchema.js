@@ -11,6 +11,7 @@ const userModel = new mongoose.Schema({
    role : {type:mongoose.Schema.Types.ObjectId,ref:'Role'},
 })
 
+// this function befor register new user
 userModel.pre('save', async function() {
    this.email = this.email.toLowerCase()
    try {
@@ -18,8 +19,9 @@ userModel.pre('save', async function() {
    } catch (error) {
       console.log(error);
    }
-  
 })
+
+
 
 
 module.exports = mongoose.model('User',userModel)
