@@ -6,7 +6,9 @@ const categoryModel = new mongoose.Schema({
 
 })
 
-
+categoryModel.pre('save' , function()  {
+  this.name = this.name.toLowerCase()
+})
 
 
 module.exports = mongoose.model('Category',categoryModel)

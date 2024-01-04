@@ -12,5 +12,8 @@ const courseModel = new mongoose.Schema({
    video : [{type:mongoose.Schema.Types.ObjectId,ref:'Video'}]
 })
 
+courseModel.pre('save',function ()  {
+    this.title = this.title.toLowerCase()
+})
 
 module.exports = mongoose.model('Course',courseModel);

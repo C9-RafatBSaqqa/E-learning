@@ -11,7 +11,8 @@ const roleRouter = require('./routes/role')
 app.use('/role',roleRouter)
 const courseRouter = require('./routes/course')
 app.use('/course',courseRouter)
-
+const categoryRouter = require('./routes/category')
+app.use('/category',categoryRouter)
 
 
 const PORT = process.env.PORT || 5000;
