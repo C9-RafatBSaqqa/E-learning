@@ -3,8 +3,8 @@ const {addNewRole } = require('../controllers/role')
 
 const roleRouter = express.Router();
 
-//  function 1
-roleRouter.post('',addNewRole)
+//  function 1 POST
+roleRouter.post('/createNewRole',addNewRole)
 
 
 

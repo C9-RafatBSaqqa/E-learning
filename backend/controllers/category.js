@@ -1,11 +1,13 @@
-const categorySchema = require('../models/categorySchema')
+const categoryModel = require('../models/categorySchema')
 
 
 // This function to create new category
 const createNewCategory = (req, res) => {
-    const name = req.body.name
-     categorySchema({
-        name
+  
+    const {name, image} = req.body;
+    categoryModel({
+        name,
+        image
     })
         .save()
         .then((result) =>
@@ -23,7 +25,26 @@ const createNewCategory = (req, res) => {
             }))
 }
 
+// this function get all category
+const getAllCategory = async (req,res) => {
+    try {
+        const found = await categoryModel.find({})
+        res.status(200).json({
+            success:true,
+            message:"All categorys",
+            result: found
+        })
+    } catch (error) {
+        res.status(403).json({
+            success:false,
+            message:"Server error",
+            result: error
+        })
+    }
+    
+}
 
 module.exports = {
-    createNewCategory
+    createNewCategory,
+    getAllCategory
 }
