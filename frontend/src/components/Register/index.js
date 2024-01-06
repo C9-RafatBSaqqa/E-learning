@@ -10,7 +10,7 @@ const Register = () => {
     const [age, setAge] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [country, setCountry] = useState();
-    
+
     return (
         <div className="register">
             <h1>Rigester component</h1>
@@ -18,34 +18,34 @@ const Register = () => {
                 <label>Name</label>
                 <input placeholder='Name' onChange={(e) => {
                     setName(e.target.value)
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <label>Email</label>
                 <input placeholder='Email' onChange={(e) => {
                     setEmail(e.target.value)
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <label>Password</label>
                 <input placeholder='Password' onChange={(e) => {
                     setPassword(e.target.value)
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <label>Age</label>
                 <input placeholder='Age' onChange={(e) => {
                     setAge(e.target.value)
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <label>Phone number</label>
                 <input placeholder='PhoneNumber' onChange={(e) => {
                     setPhoneNumber(e.target.value)
 
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <label>Country</label>
                 <input placeholder='Country' onChange={(e) => {
                     setCountry(e.target.value)
-                }}/>
-                <br/>
+                }} />
+                <br />
                 <button onClick={() => {
                     const userInfo = {
                         name,
@@ -54,15 +54,15 @@ const Register = () => {
                         age,
                         country,
                         phoneNumber,
-                        role:"6595c8431aa2ed8204c495c2"
+                        role: "6595c8431aa2ed8204c495c2"
                     }
-                    axios.post('http://localhost:5000/user/register',userInfo).then((res) => {
-                    //    Navigate('/App')
+                    axios.post('http://localhost:5000/user/register', userInfo).then((res) => {
+                        Navigate('/login')
                         console.log(res);
                     })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+                        .catch((err) => {
+                            console.log(err);
+                        })
                 }}>Register</button>
             </div>
         </div>
