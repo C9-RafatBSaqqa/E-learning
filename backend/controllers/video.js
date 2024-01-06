@@ -1,17 +1,13 @@
 const videoModel = require('../models/videoSchema')
 const courseModel = require('../models/courseSchema')
 
-const { jwtDecode } = require("jwt-decode");
-
 // This function for create new video
 const createNewVideo = (req,res) => {
-  const decoded = jwtDecode(req.headers.authorization)
-  
   const {url ,order,courseId} = req.body;
    videoModel({
     url,
     order,
-    createdBy : decoded.id,
+    createdBy : req.token.id,
     courseId,
   }).save()
   .then( async (video) => {
@@ -40,10 +36,6 @@ const createNewVideo = (req,res) => {
     })
   })
  
-  //  courseModel.findOneAndUpdate({courseId:_id})({
-  //   video:url
-  //  })
-  //  .save().then((result)=>{console.log(result)}).catch((err)=> {console.log(err);})
 }
 
 // This function get all video by course id
@@ -52,6 +44,7 @@ const getAllVideoByCourseId = async (req,res) => {
   try {
     const found = await videoModel.find({courseId:id})
     .populate("courseId")
+    // .populate("video")
     res.status(200).json({
       success:true,
       message: "All videos related to this course",

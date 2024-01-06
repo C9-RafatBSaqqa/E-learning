@@ -1,18 +1,17 @@
 const courseModel = require('../models/courseSchema')
-const { jwtDecode } = require("jwt-decode");
+
 
 // This function create new course
 const createNewCourse = async (req, res) => {
     const { image, title, description, price, category, authorizedUsers, video } = req.body;
 
-    const decoded = jwtDecode(req.headers.authorization)
     courseModel({
         image,
         title,
         description,
         price,
         category,
-        owner: decoded.id,
+        owner: req.token.id,
         authorizedUsers,
         video
     })
@@ -63,10 +62,9 @@ const getAllCourseByCategoryId = async (req, res) => {
 // this function update course by id 
 const updateCourseById = (req, res) => {
     const { courseId } = req.params;
-    const decoded = jwtDecode(req.headers.authorization)
     courseModel.findOne({ _id: courseId })
         .then((owner) => {
-            if (decoded.id == owner.owner) {
+            if (req.token.id == owner.owner) {
                 courseModel.findByIdAndUpdate({ _id: courseId }, req.body, { new: true })
                     .then((result) => {
                         res.status(200).json({
@@ -102,9 +100,8 @@ const updateCourseById = (req, res) => {
 // This function delete course by id
 const deleteCourseById = async (req, res) => {
     const {courseId} = req.params
-    const decoded = jwtDecode(req.headers.authorization)
     courseModel.findOne({ _id: courseId }).then((owner) => {
-        if (decoded.id == owner.owner) {
+        if (req.token.id == owner.owner) {
             courseModel.findOneAndDelete({ _id: courseId })
             .then((deleted) => {
                if (deleted) {

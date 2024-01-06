@@ -69,7 +69,7 @@ const login = async (req,res) => {
                 message: "Email or password not found"
             })
         }
-        // console.log(req); // test
+        // console.log(req); //
     } else {
         res.status(404).json({
             success:false,
