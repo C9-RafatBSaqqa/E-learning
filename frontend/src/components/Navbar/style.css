@@ -1,3 +1,13 @@
-.register-link{
-    padding: 10px;
+
+.logged-in-list  {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.logged-out-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }

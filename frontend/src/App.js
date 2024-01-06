@@ -4,22 +4,30 @@ import React, { useState, createContext } from "react";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Home from "./components/Home";
+
+export const UserContext = createContext();
 function App() {
-  const userContext = createContext();
+ 
+  const [token, setToken] = useState(localStorage.getItem('token'));
+console.log(token,"app");
+  
   return (
-    <userContext.Provider>
+    <UserContext.Provider value={{token,setToken}}>
        <Navbar />
+       <Home/>
        <Routes>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
-       </Routes>
-       
-    <div className="App">
       
-      <h1>Hello, World!</h1>
+       </Routes>
+    <div className="App">
+    
+      
+      <h1>App component</h1>
     </div>
-    {/* <Login/> */}
-    </userContext.Provider>
+   
+    </UserContext.Provider>
   );
 }
 
