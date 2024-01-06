@@ -4,6 +4,7 @@ const cors = require("cors");
 require('./models/db')
 const app = express();
 app.use(express.json());
+app.use(cors());
 // Routers
 const userRouter = require('./routes/user')
 app.use('/user',userRouter)
@@ -22,7 +23,7 @@ app.use('/video',videoRouter)
 
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+
 
 
 // Handles any other endpoints [unassigned - endpoints]

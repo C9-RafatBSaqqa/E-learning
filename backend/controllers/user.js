@@ -25,7 +25,7 @@ const register = (req,res) => {
    .catch(err => {
     res.status(404).json({
         success:false,
-        message:"Server error",
+        message:"Email exist",
         error : err
     })
    })
