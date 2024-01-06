@@ -1,11 +1,12 @@
-const courseSchema = require('../models/courseSchema')
+const courseModel = require('../models/courseSchema')
 const { jwtDecode } = require("jwt-decode");
 
 // This function create new course
 const createNewCourse = async (req, res) => {
     const { image, title, description, price, category, authorizedUsers, video } = req.body;
+
     const decoded = jwtDecode(req.headers.authorization)
-    courseSchema({
+    courseModel({
         image,
         title,
         description,
@@ -36,7 +37,7 @@ const createNewCourse = async (req, res) => {
 const getAllCourseByCategoryId = async (req, res) => {
     const { categoryId } = req.params;
     try {
-        const found = await courseSchema.find({ category: categoryId })
+        const found = await courseModel.find({ category: categoryId })
         if (found) {
             res.status(200).json({
                 success: true,
@@ -63,10 +64,10 @@ const getAllCourseByCategoryId = async (req, res) => {
 const updateCourseById = (req, res) => {
     const { courseId } = req.params;
     const decoded = jwtDecode(req.headers.authorization)
-    courseSchema.findOne({ _id: courseId })
+    courseModel.findOne({ _id: courseId })
         .then((owner) => {
             if (decoded.id == owner.owner) {
-                courseSchema.findByIdAndUpdate({ _id: courseId }, req.body, { new: true })
+                courseModel.findByIdAndUpdate({ _id: courseId }, req.body, { new: true })
                     .then((result) => {
                         res.status(200).json({
                             success: true,
@@ -102,9 +103,9 @@ const updateCourseById = (req, res) => {
 const deleteCourseById = async (req, res) => {
     const {courseId} = req.params
     const decoded = jwtDecode(req.headers.authorization)
-    courseSchema.findOne({ _id: courseId }).then((owner) => {
+    courseModel.findOne({ _id: courseId }).then((owner) => {
         if (decoded.id == owner.owner) {
-            courseSchema.findOneAndDelete({ _id: courseId })
+            courseModel.findOneAndDelete({ _id: courseId })
             .then((deleted) => {
                if (deleted) {
                    res.status(200).json({

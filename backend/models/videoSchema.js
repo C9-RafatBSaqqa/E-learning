@@ -2,8 +2,10 @@ const mongoose = require('mongoose')
 
 
 const videoModel = new mongoose.Schema({
-   name : {type: String, required : true },
-   order : [{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
+   url : {type: String, required : true },
+   order : [{type:Number,required:true}],
+   createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
+   courseId:{type:mongoose.Schema.Types.ObjectId,ref:'Course'}
 })
 
 

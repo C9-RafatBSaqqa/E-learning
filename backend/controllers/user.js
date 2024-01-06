@@ -40,13 +40,13 @@ const login = async (req,res) => {
     .populate('role')
     .populate({path:'role',select:'role',select:'permissions'})
     .populate('role')
-    console.log(found.role.role);
     if(found) {
         const validUser = await bcrypt.compare(password,found.password)
         if(validUser) {
             const options = {
                 expiresIn:'60m'
             }
+            
             const payload = {
                 id:found.id,
                 country:found.country,
@@ -55,11 +55,13 @@ const login = async (req,res) => {
                     permissions:found.role.permissions
                 }
             }
+            
           const token = jwt.sign(payload,process.env.SECRET,options)
           res.status(200).json({
             success:true,
             message:"Login successful",
-            userToken : token
+            userToken : token,
+            user:found._id
           })    
         }else {
             res.status(404).json({
@@ -67,12 +69,14 @@ const login = async (req,res) => {
                 message: "Email or password not found"
             })
         }
+        // console.log(req); // test
     } else {
         res.status(404).json({
             success:false,
             message: "Email not found"
         })
     }
+    
   } catch (error) {
     res.status(403).json({
         success:false,
