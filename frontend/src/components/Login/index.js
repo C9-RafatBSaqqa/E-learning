@@ -28,7 +28,7 @@ const Login = () => {
                 }
                 axios.post('http://localhost:5000/user/login', userInfo).then((result) => {
                     user.setToken(localStorage.setItem('token', result.data.userToken))
-                    Navigate("/app")
+                    Navigate("/home")
 
                 }).catch((err) => {
                     console.log(err);

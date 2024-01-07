@@ -14,8 +14,10 @@ function App() {
   return (
     <UserContext.Provider value={{ token, setToken }}>
       <Navbar />
-      <Home />
+
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
