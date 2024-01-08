@@ -17,7 +17,6 @@ const Home = () => {
         console.log(err);
       });
   }, []);
-
   return (
     <div>
       <div className="card">

@@ -3,9 +3,8 @@ import { UserContext } from "../../App";
 import axios from "axios";
 
 const Enroll = () => {
-  const enroll = localStorage.getItem("enroll");
   const user = useContext(UserContext);
-  // console.log(user);
+  const enroll = localStorage.getItem("enroll");
   const [courseEnroll, setCourseEnroll] = useState([]);
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const Enroll = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         setCourseEnroll(result.data.result);
       })
       .catch((err) => {
@@ -25,7 +24,6 @@ const Enroll = () => {
   }, []);
   return (
     <div>
-      
       {courseEnroll.map((result, ind) => {
         return (
           <div key={ind}>
