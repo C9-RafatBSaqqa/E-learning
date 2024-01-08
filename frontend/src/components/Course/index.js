@@ -4,20 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 const Course = () => {
-  const [courseEnroll, setCourseEnroll] = useState();
-  
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/video/getCourseVideos/${res}`)
-      .then((result) => {
-        setCourseEnroll(result.data.result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   const user = useContext(UserContext);
-
   const category = localStorage.getItem("category");
   useEffect(() => {
     axios
@@ -28,8 +15,6 @@ const Course = () => {
       })
       .then((res) => {
         user.setCourse(res.data.result);
-        //  user.Navigate('/course')
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -38,9 +23,9 @@ const Course = () => {
   return (
     <div className="course">
       {user.course.map((res, ind) => {
-        console.log(res);
+        // console.log(res);
         return (
-          <div className="single-course">
+          <div key={ind} className="single-course">
             <div className="img-div">
               <img width={"50%"} src={res.image} />
             </div>
@@ -48,9 +33,14 @@ const Course = () => {
               <h1>{res.title}</h1>
               <p>{res.description}</p>
             </div>
-            <button onClick={() => {
-             localStorage.setItem('enroll',res._id)
-            }}>Enroll</button>
+            <button
+              onClick={() => {
+                user.Navigate("/enroll");
+                localStorage.setItem("enroll", res._id);
+              }}
+            >
+              Enroll
+            </button>
           </div>
         );
       })}

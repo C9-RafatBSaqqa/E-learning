@@ -2,11 +2,9 @@ import "./style.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
-import Course from "../Course/index";
 
 const Home = () => {
   const user = useContext(UserContext);
-  // const navigate = useContext(UserContext)
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -31,8 +29,6 @@ const Home = () => {
               <button
                 onClick={() => {
                   user.Navigate("/course");
-                  // <Course courseId= {res._id}/>
-                  user.setCourseId(res._id);
                   localStorage.setItem('category',res._id)
                 }}
               >
