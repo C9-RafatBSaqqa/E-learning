@@ -1,18 +1,21 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import React, { useState, createContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
-
+import Course from "./components/Course";
 export const UserContext = createContext();
 function App() {
+  const Navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('token'));
-
+  const [course, setCourse] = useState([]);
+  const [courseId, setCourseId] = useState();
 
   return (
-    <UserContext.Provider value={{ token, setToken }}>
+    <UserContext.Provider value={{Navigate, token, setToken ,setCourse, course,courseId,setCourseId}}>
       <Navbar />
 
       <Routes>
@@ -20,6 +23,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/course" element={<Course />} />
 
       </Routes>
       {/* <div className="App">

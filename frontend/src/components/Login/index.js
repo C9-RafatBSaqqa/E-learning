@@ -1,9 +1,7 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 const Login = () => {
-    const Navigate = useNavigate();
     const user = useContext(UserContext);
 
     const [password, setPassword] = useState();
@@ -28,7 +26,7 @@ const Login = () => {
                 }
                 axios.post('http://localhost:5000/user/login', userInfo).then((result) => {
                     user.setToken(localStorage.setItem('token', result.data.userToken))
-                    Navigate("/home")
+                    user.Navigate("/home")
 
                 }).catch((err) => {
                     console.log(err);

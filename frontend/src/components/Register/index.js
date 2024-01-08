@@ -1,9 +1,10 @@
 import './style.css';
-import { useState } from 'react';
+import { useState ,useContext} from 'react';
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 const Register = () => {
-    const Navigate = useNavigate()
+    const user = useContext(UserContext);
+
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -57,7 +58,7 @@ const Register = () => {
                         role: "6595c8431aa2ed8204c495c2"
                     }
                     axios.post('http://localhost:5000/user/register', userInfo).then((res) => {
-                        Navigate('/login')
+                        user.Navigate('/login')
                         console.log(res);
                     })
                         .catch((err) => {

@@ -11,7 +11,7 @@ const courseRouter = express.Router()
 courseRouter.post('/createNewCourse',authentication,authorization("CREATE_COURSE"),createNewCourse);
 
 // function 2 GET
-courseRouter.get('/getAllCourseByCategory/:categoryId',getAllCourseByCategoryId);
+courseRouter.get('/getAllCourseByCategory/:categoryId',authentication,getAllCourseByCategoryId);
 
 // function 3 UPDATE
 courseRouter.put('/updateCourse/:courseId',authentication,authorization("UPADTE_COURSE"),updateCourseById)

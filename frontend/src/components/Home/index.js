@@ -1,30 +1,51 @@
+import "./style.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
+import Course from "../Course/index";
 
 const Home = () => {
-    // const user = useContext(UserContext)
-    const [category, setCategory] = useState([]);
+  const user = useContext(UserContext);
+  // const navigate = useContext(UserContext)
+  const [category, setCategory] = useState([]);
 
-    return (
-        <div>
-            {useEffect(() => {
-                axios.get('http://localhost:5000/category/getAllCategory')
-                    .then((result) => {
-                        setCategory(result.data.result)
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
-            }, [])}
-            {category.map((res, ind) => {
-                console.log(res);
-                return <>
-                    <h1>{res.name}</h1></>
-            })}
-            <h1>Home component</h1>
-        </div>
-    );
-}
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/category/getAllCategory")
+      .then((result) => {
+        setCategory(result.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-export default Home
+  return (
+    <div>
+      <div className="card">
+        {category.map((res, ind) => {
+          return (
+            <div key={ind} className="single-category">
+              <img src={res.url} alt={res.name} />
+              <h4 className="category-title">{res.name}</h4>
+              <button
+                onClick={() => {
+                  user.Navigate("/course");
+                  // <Course courseId= {res._id}/>
+                  user.setCourseId(res._id);
+                  localStorage.setItem('category',res._id)
+                }}
+              >
+                Click here
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
+      <h1>Home component</h1>
+    </div>
+  );
+};
+
+export default Home;
