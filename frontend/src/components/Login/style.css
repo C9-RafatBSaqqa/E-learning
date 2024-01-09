@@ -1,0 +1,73 @@
+.Login-component {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 10px;
+}
+.inputform {
+    display: flex;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-image: url("../../img/background.jpg");
+    background-size: 100% 100%;
+
+}
+.btn{
+    border: none;
+    border-radius: 5px;
+    padding: 9px 20px;
+    font-size: 17px;
+    transition: 0.5s;
+}
+.btn:hover {
+    cursor: pointer;
+}
+.subsc-btn {
+    margin-top: 20px;
+    background-color: rgb(69, 69, 219);
+    color: white;
+}
+.desc-login {
+    padding: 20px;
+    text-align: center;
+}
+.parg-login {
+    padding-top: 20px;
+    font-size: 19px;
+    font-weight: 700;
+    overflow:auto;
+} 
+.input-container {
+    position: relative;
+    margin-top: 20px;
+}
+.login-btn {
+    margin-top: 20px;
+}
+.input-field {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #e6e6e6;
+    transition: box-shadow 0.3s;
+    font-size: 16px;
+    outline: none;
+}
+.input-label {
+    position: absolute;
+    color: #999;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: top 0.3s,font-size 0.3s,color 0.3s;
+}
+.input-field:focus+.input-label,
+.input-field:not(:placeholder-shown)+.input-label{
+    top: 0%;
+    font-size: 12px;
+    color: #000;
+    background-color: #eafcff;
+    border-radius: 3px;
+    font-weight: 700;
+}

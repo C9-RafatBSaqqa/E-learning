@@ -4,17 +4,18 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 const Course = () => {
-  const user = useContext(UserContext);
+  const {Navigate,token} = useContext(UserContext);
+  const [course, setCourse] = useState([]);
   const category = localStorage.getItem("category");
   useEffect(() => {
     axios
       .get(`http://localhost:5000/course/getAllCourseByCategory/${category}`, {
         headers: {
-          authorization: `Bearer ${user.token}`,
+          authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        user.setCourse(res.data.result);
+        setCourse(res.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -22,7 +23,7 @@ const Course = () => {
   }, []);
   return (
     <div className="course">
-      {user.course.map((res, ind) => {
+      {course.map((res, ind) => {
         // console.log(res);
         return (
           <div key={ind} className="single-course">
@@ -35,7 +36,7 @@ const Course = () => {
             </div>
             <button
               onClick={() => {
-                user.Navigate("/enroll");
+                Navigate("/enroll");
                 localStorage.setItem("enroll", res._id);
               }}
             >

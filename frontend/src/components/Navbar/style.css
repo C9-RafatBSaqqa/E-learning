@@ -1,13 +1,54 @@
 
 .logged-in-list  {
-    list-style-type: none;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 100px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
 }
 .logged-out-list {
-    list-style-type: none;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 100px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+.navbar {
+    background-color: rgb(50, 67, 73);
+}
+.home-link, .logout-link , .register-link, .login-link, .aboutUs-link{
+    text-decoration: none;
+    padding: 19px 25px;
+    color: white;
+}
+.home-link, .logout-link , .register-link:hover, .login-link, .aboutUs-link:hover {
+    background-color: rgb(57, 90, 130);
+    color: white;
+    transition: 0.5s;
+}
+.home-link{
+    padding: 19px 25px;
+}
+.login-link {
+    padding: 10px 25px;
+    border-radius: 50px;
+    background-color: rgb(69, 69, 219);
+    color: white;
+    transition: 0.3s;
+}
+.login-link:hover {
+    background-color: rgb(81, 81, 255);
+}
+.logout-link {
+    padding: 10px 25px;
+    border-radius: 50px;
+    background-color: rgb(219, 69, 69);
+    color: white;
+    transition: 0.3s;
+}
+.logout-link:hover {
+    background-color: rgb(194, 59, 59);
+}
+.brand {
+    color: white;
 }

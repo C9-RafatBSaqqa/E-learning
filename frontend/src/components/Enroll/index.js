@@ -3,7 +3,7 @@ import { UserContext } from "../../App";
 import axios from "axios";
 
 const Enroll = () => {
-  const user = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const enroll = localStorage.getItem("enroll");
   const [courseEnroll, setCourseEnroll] = useState([]);
 
@@ -11,11 +11,10 @@ const Enroll = () => {
     axios
       .get(`http://localhost:5000/video/getCourseVideos/${enroll}`, {
         headers: {
-          authorization: `Bearer ${user.token}`,
+          authorization: `Bearer ${token}`,
         },
       })
       .then((result) => {
-        // console.log(result.data);
         setCourseEnroll(result.data.result);
       })
       .catch((err) => {

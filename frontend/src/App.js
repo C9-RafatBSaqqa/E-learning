@@ -12,11 +12,11 @@ export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('token'));
-  const [course, setCourse] = useState([]);
-  const [courseId, setCourseId] = useState();
+
 
   return (
-    <UserContext.Provider value={{Navigate, token, setToken ,setCourse, course,courseId,setCourseId}}>
+    <UserContext.Provider value={{Navigate, token, setToken }}>
+      <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,11 +25,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/course" element={<Course />} />
         <Route path="/enroll" element={<Enroll />} />
-
+        <Route path={"*"}/>
       </Routes>
-      {/* <div className="App">
-        <h1>App component</h1>
-      </div> */}
+      </div>
 
     </UserContext.Provider>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 import { UserContext } from "../../App";
 
 const Home = () => {
-  const user = useContext(UserContext);
+  const {Navigate} = useContext(UserContext);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -19,6 +19,9 @@ const Home = () => {
   }, []);
   return (
     <div>
+      <div>
+        <h1 className="h1-home">gome</h1>
+      </div>
       <div className="card">
         {category.map((res, ind) => {
           return (
@@ -27,7 +30,7 @@ const Home = () => {
               <h4 className="category-title">{res.name}</h4>
               <button
                 onClick={() => {
-                  user.Navigate("/course");
+                  Navigate("/course");
                   localStorage.setItem('category',res._id)
                 }}
               >
