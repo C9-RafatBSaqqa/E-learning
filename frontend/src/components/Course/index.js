@@ -33,7 +33,7 @@ const Course = () => {
             <div className="course-title">
               <h1>{res.title}</h1>
               <p>{res.description}</p>
-              <p>{res.price}$</p>
+              <p>${res.price}</p>
             </div>
             <button className="btn"
               onClick={() => {

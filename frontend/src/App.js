@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Course from "./components/Course";
 import Enroll from "./components/Enroll";
 import Footer from "./components/Footer";
+import Admin from "./components/Admin";
 export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/course" element={<Course />} />
         <Route path="/enroll" element={<Enroll />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path={"*"}/>
       </Routes>
 

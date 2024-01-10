@@ -65,9 +65,15 @@ const Login = () => {
             axios
               .post("http://localhost:5000/user/login", userInfo)
               .then((result) => {
-                Navigate("/home");
-                console.log("User id", result.data.user);
-
+                
+                console.log(result.data.role);
+                if(result.data.role === "ADMIN") {
+                  Navigate("/admin");
+                } else if (result.data.role === "INSTRUCTOR") {
+                  console.log("hello INSTRUCTOR");
+                } else {
+                  Navigate("/home");
+                }
                 localStorage.setItem("token", result.data.userToken);
                 setToken(localStorage.getItem("token"));
               })
