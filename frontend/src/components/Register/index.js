@@ -12,17 +12,24 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [country, setCountry] = useState();
 
+  const [nameError, setNameError] = useState();
+  const [emailError, setEmailError] = useState();
+  const [passwordError, setPasswordError] = useState();
+
   return (
     <div className="inputform-reg">
-        
-       <div className="desc-login">
+      <div className="desc-login">
         <h1>Learn From The Expert</h1>
-        <p className="parg-login">Lore LoreLoreLorepLoreLoreLoreLoreLoreLoreLoreLo<br />reLoreLoreLore</p>
+        <p className="parg-login">
+          Lore LoreLoreLorepLoreLoreLoreLoreLoreLoreLoreLo
+          <br />
+          reLoreLoreLore
+        </p>
         <button className="subsc-btn btn">Subsecrib Now</button>
       </div>
 
       <div className="register-component">
-      <h1>Sign Up</h1>
+        <h1>Sign Up</h1>
         <div className="input-container">
           <input
             className="input-fieldreg"
@@ -33,7 +40,7 @@ const Register = () => {
               setName(e.target.value);
             }}
           />
-          <label for="name" className="input-label">
+          <label htmlFor="name" className="input-label">
             Name
           </label>
         </div>
@@ -48,7 +55,7 @@ const Register = () => {
               setEmail(e.target.value);
             }}
           />
-          <label for="email" className="input-label">
+          <label htmlFor="email" className="input-label">
             Email
           </label>
         </div>
@@ -63,7 +70,7 @@ const Register = () => {
               setPassword(e.target.value);
             }}
           />
-          <label for="password" className="input-label">
+          <label htmlFor="password" className="input-label">
             Password
           </label>
         </div>
@@ -78,7 +85,7 @@ const Register = () => {
               setAge(e.target.value);
             }}
           />
-          <label for="age" className="input-label">
+          <label htmlFor="age" className="input-label">
             Age
           </label>
         </div>
@@ -93,7 +100,7 @@ const Register = () => {
               setPhoneNumber(e.target.value);
             }}
           />
-          <label for="phoneNumber" className="input-label">
+          <label htmlFor="phoneNumber" className="input-label">
             Phone number
           </label>
         </div>
@@ -108,12 +115,15 @@ const Register = () => {
               setCountry(e.target.value);
             }}
           />
-          <label for="country" className="input-label">
+          <label htmlFor="country" className="input-label">
             Country
           </label>
         </div>
-
-        <button className="register-btn btn"
+        <p className="error">{nameError}</p>
+        <p className="error"> {emailError}</p>
+        <p className="error"> {passwordError}</p>
+        <button
+          className="register-btn btn"
           onClick={() => {
             const userInfo = {
               name,
@@ -131,13 +141,16 @@ const Register = () => {
                 console.log(res);
               })
               .catch((err) => {
-                console.log(err);
+                setNameError(err.response.data.error.errors.name.message);
+                setEmailError(err.response.data.error.errors.email.message);
+                setPasswordError(
+                  err.response.data.error.errors.password.message
+                );
               });
           }}
         >
           Register
         </button>
-
       </div>
     </div>
   );

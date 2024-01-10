@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Course from "./components/Course";
 import Enroll from "./components/Enroll";
+import Footer from "./components/Footer";
 export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
@@ -27,6 +28,8 @@ function App() {
         <Route path="/enroll" element={<Enroll />} />
         <Route path={"*"}/>
       </Routes>
+
+      <Footer/>
       </div>
 
     </UserContext.Provider>

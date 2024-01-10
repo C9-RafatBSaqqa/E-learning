@@ -18,17 +18,26 @@ const Home = () => {
       });
   }, []);
   return (
-    <div>
-      <div>
-        <h1 className="h1-home">gome</h1>
+    <div >
+  
+      <div className="desc-home">
+        <h1 className="h1-home">The Worlds Best Online Courses</h1>
+        <p className="parg-home">Own you future by learning new skills online</p>
+        <input className="search-home" type="search" placeholder=" Search..."/>
       </div>
+      <div className="home-sec">
+      <h1 className="h1-sec-home">Our Category</h1>
+      <p>The world Largest selection of course</p>
+      </div>
+    
+      <div className="sect-card">
       <div className="card">
         {category.map((res, ind) => {
           return (
             <div key={ind} className="single-category">
-              <img src={res.url} alt={res.name} />
+              <img className="cate-img" src={res.image} alt={res.name} />
               <h4 className="category-title">{res.name}</h4>
-              <button
+              <button className="btn"
                 onClick={() => {
                   Navigate("/course");
                   localStorage.setItem('category',res._id)
@@ -40,8 +49,8 @@ const Home = () => {
           );
         })}
       </div>
+      </div>
 
-      <h1>Home component</h1>
     </div>
   );
 };

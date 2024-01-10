@@ -1,3 +1,4 @@
+import './style.css';
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import axios from "axios";
@@ -22,7 +23,8 @@ const Enroll = () => {
       });
   }, []);
   return (
-    <div>
+    <div className="enroll">
+      <div className="video-section">
       {courseEnroll.map((result, ind) => {
         return (
           <div key={ind}>
@@ -30,11 +32,11 @@ const Enroll = () => {
               <source src={result.url} type="video/mp4"></source>
               Your browser does not support HTML video.
             </video>
-            {result.url}
+            {result.order}
           </div>
         );
       })}
-      <h1>Enroll component</h1>
+      </div>
     </div>
   );
 };

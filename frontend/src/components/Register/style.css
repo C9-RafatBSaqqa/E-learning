@@ -7,7 +7,6 @@
 .register-btn {
     margin-top: 20px;
 }
-
 .input-fieldreg {
     padding: 10px 25px;
     border: none;
@@ -35,4 +34,7 @@
     flex-wrap: wrap;
     background-image: url("../../img/background.jpg");
     background-size: 100% 100%;
+}
+.error {
+    color: red;
 }

@@ -28,7 +28,7 @@ const Login = () => {
               setEmail(e.target.value);
             }}
           />
-          <label for="email" className="input-label">
+          <label htmlFor="email" className="input-label">
             Email
           </label>
         </div>
@@ -43,7 +43,7 @@ const Login = () => {
               setPassword(e.target.value);
             }}
           />
-          <label for="password" className="input-label">
+          <label htmlFor="password" className="input-label">
             Password
           </label>
         </div>

@@ -1,0 +1,5 @@
+.video-section {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: red;
+}
