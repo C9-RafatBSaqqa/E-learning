@@ -33,8 +33,9 @@ const Course = () => {
             <div className="course-title">
               <h1>{res.title}</h1>
               <p>{res.description}</p>
+              <p>{res.price}$</p>
             </div>
-            <button
+            <button className="btn"
               onClick={() => {
                 Navigate("/enroll");
                 localStorage.setItem("enroll", res._id);

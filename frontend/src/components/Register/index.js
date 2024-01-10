@@ -25,7 +25,7 @@ const Register = () => {
           <br />
           reLoreLoreLore
         </p>
-        <button className="subsc-btn btn">Subsecrib Now</button>
+        <button className="subsc-btn btn">Subsecribe Now</button>
       </div>
 
       <div className="register-component">
@@ -119,6 +119,7 @@ const Register = () => {
             Country
           </label>
         </div>
+        <br/>
         <p className="error">{nameError}</p>
         <p className="error"> {emailError}</p>
         <p className="error"> {passwordError}</p>
