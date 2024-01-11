@@ -16,8 +16,6 @@ const Enroll = () => {
         },
       })
       .then((result) => {
-        console.log("User id",result.data.user);
-        console.log("User id",result.data.id);
         setCourseEnroll(result.data.result);
       })
       .catch((err) => {

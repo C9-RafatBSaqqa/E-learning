@@ -8,7 +8,6 @@ const Course = () => {
   const [course, setCourse] = useState([]);
   const category = localStorage.getItem("category");
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
-  console.log(userId, "course");
 
   useEffect(() => {
     axios
@@ -41,7 +40,6 @@ const Course = () => {
                 {res.authorizationUser.map((auth, ind) => {
                   return (
                     <div key={ind}>
-                      
                       {auth.includes(userId) ? (
                         <button
                           className="btn"
@@ -55,12 +53,10 @@ const Course = () => {
                       ) : (
                         <button className="subsc-btn btn">Subscribe Now</button>
                       )}
-                  
                     </div>
                   );
                 })}
               </p>
-              
             </div>
           </div>
         );
