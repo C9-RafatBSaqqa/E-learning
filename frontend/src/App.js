@@ -9,15 +9,13 @@ import Home from "./components/Home";
 import Course from "./components/Course";
 import Enroll from "./components/Enroll";
 import Footer from "./components/Footer";
-import Admin from "./components/Admin";
+import Instructor from "./components/Instructor";
 import Error from "./components/Error";
 export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [instructor, setInstructor] = useState(false);
-  
-console.log(instructor);
 
   return (
     <UserContext.Provider value={{Navigate, token, setToken ,setInstructor}}>
@@ -30,7 +28,7 @@ console.log(instructor);
         <Route path="/login" element={<Login />} />
         <Route path="/course" element={<Course />} />
         <Route path="/enroll" element={<Enroll />} />
-       {instructor && <Route path="/admin" element={<Admin />} /> }
+       {instructor && <Route path="/instructor" element={<Instructor />} /> }
 
         <Route path={"*"} element= {<Error/>}/>
       </Routes>

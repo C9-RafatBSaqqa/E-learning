@@ -67,7 +67,7 @@ const Login = () => {
               .then((result) => {                
                  if (result.data.role === "INSTRUCTOR") {
                   setInstructor(true)
-                  Navigate("/admin");
+                  Navigate("/instructor");
                 } else {
                   Navigate("/home");
                 }
