@@ -14,12 +14,15 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
+
 const Course = () => {
   const { Navigate, token } = useContext(UserContext);
   const [course, setCourse] = useState([]);
   const category = localStorage.getItem("category");
-  const [userId, setUserId] = useState(localStorage.getItem("userId"));
+  const userId = localStorage.getItem("userId")
   const [filter, setFilter] = useState(course);
+
+ 
   const handleFilter = (event) => {
     const value = event.target.value;
     const filtered = course.filter((course) => course.title.includes(value));
@@ -41,7 +44,7 @@ const Course = () => {
         console.log(err);
       });
   }, []);
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   return (
     <div>
       <main>

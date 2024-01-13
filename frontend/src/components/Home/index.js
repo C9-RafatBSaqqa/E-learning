@@ -6,23 +6,27 @@ import { UserContext } from "../../App";
 const Home = () => {
   const { Navigate } = useContext(UserContext);
   const [category, setCategory] = useState([]);
-  const [filter, setFilter] = useState(category);
-  const handleFilter = (event) => {   
-    const value = event.target.value;
-    const filtered = category.filter((cate) => cate.name.includes(value));
-    setFilter(filtered);
-  };
+  let page = [];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categoryPerPage, setcategoryPerPage] = useState(3);
+  for (let i = 1; i <= Math.ceil(category.length / categoryPerPage); i++) {
+    page.push(i);
+  }
   useEffect(() => {
     axios
       .get("http://localhost:5000/category/getAllCategory")
       .then((result) => {
         setCategory(result.data.result);
-        setFilter(result.data.result)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const lastCategory = currentPage * categoryPerPage;
+  const firstCategory = lastCategory - categoryPerPage;
+
+  const currentCategory = category.slice(firstCategory, lastCategory);
   return (
     <div>
       <div className="desc-home">
@@ -34,14 +38,11 @@ const Home = () => {
       </div>
       <div className="home-sec">
         <h1 className="h1-sec-home">Our Category</h1>
-        <p>The world Largest selection of course</p>
-      </div>
-      <div>
-        <input placeholder="Search..." className="category-search" type="text" onChange={handleFilter} />
+        <p className="par-sec-home">The world Largest selection of course</p>
       </div>
       <div className="sect-card">
         <div className="card">
-          {filter.map((res, ind) => {
+          {currentCategory.map((res, ind) => {
             return (
               <div key={ind} className="single-category">
                 <img className="categoty-img" src={res.image} alt={res.name} />
@@ -60,6 +61,22 @@ const Home = () => {
                   </button>
                 </div>
               </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="center">
+        <div class="pagination">
+          {page.map((page, ind) => {
+            return (
+              <p className={page == currentPage ?'active':'' }
+                key={ind}
+                onClick={() => {
+                  setCurrentPage(page);
+                }}
+              >
+                {page}
+              </p>
             );
           })}
         </div>

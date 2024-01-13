@@ -22,7 +22,14 @@
     padding: 50px;
   }
   .h1-sec-home {
-    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 45px;
+  }
+  .par-sec-home {
+    margin-bottom: 50px;
+
+    font-size: 20px;
   }
   .sect-card {
     background-color:rgba(234, 233, 233, 0.23);
@@ -61,6 +68,33 @@
   .cate-btn:hover {
     background-color: rgb(253, 242, 229);
   }
+
+  .center {
+    text-align: center;
+  }
+  
+.pagination {
+  display: inline-block;
+  padding: 10px;
+}
+
+.pagination p {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination p.active {
+  background-color: rgb(57, 90, 130);
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination p:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
   @media(max-width: 768px) {
     .card{
       grid-template-columns:repeat(2,1fr);
