@@ -1,8 +1,16 @@
 .footer {
     display: flex;
-    justify-content: space-between;
-    padding: 30px;
+    justify-content: space-around;
+    padding: 15px 20px;
     background-color: rgb(50, 67, 73);
     color: white;
     flex-wrap: wrap;
+}
+.fa-brands  {
+    padding: 10px;
+    transition: 0.3s ;
+}
+.fa-brands:hover {
+    cursor: pointer;
+    font-size: large;
 }

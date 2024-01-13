@@ -25,7 +25,7 @@ const Register = () => {
           <br />
           reLoreLoreLore
         </p>
-        <button className="subsc-btn btn">Subsecribe Now</button>
+        <button className="subsc-btn btn">Subscribe Now</button>
       </div>
 
       <div className="register-component">
