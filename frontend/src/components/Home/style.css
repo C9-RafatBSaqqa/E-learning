@@ -1,5 +1,5 @@
+  /* Start first page  */
   .desc-home {
-    /* text-align: center; */
     padding: 10em;
     background-color: rgba(32, 30, 30, 0.447);
     background-size: cover;
@@ -17,6 +17,10 @@
   .parg-home {
     margin-top: 30px;
   }
+    /* End first page  */
+
+    /* Start second page  */
+
   .home-sec {
     text-align: center;
     padding: 50px;
@@ -28,9 +32,11 @@
   }
   .par-sec-home {
     margin-bottom: 50px;
-
     font-size: 20px;
   }
+    /* End second page  */
+
+    /* Start page card */
   .sect-card {
     background-color:rgba(234, 233, 233, 0.23);
     padding: 40px;
@@ -39,10 +45,7 @@
     display: grid;
     grid-template-columns:repeat(3,1fr);
     gap:10px;
-    /* width:50%;
-    margin:auto; */
     text-align: center;
-    /* background-color: rgba(234, 233, 233, 0.23); */
   }
    .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -68,7 +71,9 @@
   .cate-btn:hover {
     background-color: rgb(253, 242, 229);
   }
-
+    /* End page card */
+    
+  /* Start Pagination code */
   .center {
     text-align: center;
   }
@@ -94,7 +99,11 @@
 .pagination p:hover:not(.active) {
   background-color: #ddd;
   border-radius: 5px;
+  cursor: pointer;
 }
+  /* End Pagination code */
+
+  /* Start Responsive card */
   @media(max-width: 768px) {
     .card{
       grid-template-columns:repeat(2,1fr);
@@ -108,3 +117,4 @@
     
   }  
  
+    /* End Responsive card */

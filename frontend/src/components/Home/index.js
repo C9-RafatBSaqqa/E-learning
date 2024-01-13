@@ -69,7 +69,8 @@ const Home = () => {
         <div class="pagination">
           {page.map((page, ind) => {
             return (
-              <p className={page == currentPage ?'active':'' }
+              <p
+                className={page == currentPage ? "active" : ""}
                 key={ind}
                 onClick={() => {
                   setCurrentPage(page);
@@ -77,6 +78,7 @@ const Home = () => {
               >
                 {page}
               </p>
+              
             );
           })}
         </div>

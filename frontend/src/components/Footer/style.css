@@ -1,3 +1,4 @@
+/* Start footer code */
 .footer {
     display: flex;
     justify-content: space-around;
@@ -17,3 +18,4 @@
     cursor: pointer;
     font-size: large;
 }
+/* End footer code */

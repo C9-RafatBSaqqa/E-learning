@@ -28,10 +28,7 @@ const Enroll = () => {
       {courseEnroll.map((result, ind) => {
         return (
           <div key={ind}>
-            <video width="400" controls>
-              <source src={result.url} type="video/mp4"></source>
-              Your browser does not support HTML video.
-            </video>
+           <iframe width="853" height="480" src={result.url} title="Nightcore (lyrics) alone [Alan Walker]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             {result.order}
           </div>
         );
