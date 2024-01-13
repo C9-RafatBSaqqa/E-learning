@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
 const Login = () => {
-  const { setToken, Navigate } = useContext(UserContext);
+  const { setToken, Navigate ,setInstructor} = useContext(UserContext);
 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -65,10 +65,9 @@ const Login = () => {
             axios
               .post("http://localhost:5000/user/login", userInfo)
               .then((result) => {                
-                if(result.data.role === "ADMIN") {
+                 if (result.data.role === "INSTRUCTOR") {
+                  setInstructor(true)
                   Navigate("/admin");
-                } else if (result.data.role === "INSTRUCTOR") {
-                  console.log("hello INSTRUCTOR");
                 } else {
                   Navigate("/home");
                 }

@@ -8,6 +8,7 @@ const Course = () => {
   const [course, setCourse] = useState([]);
   const category = localStorage.getItem("category");
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     axios
@@ -37,25 +38,21 @@ const Course = () => {
               <p>{res.description}</p>
               <p>${res.price}</p>
               <p>
-                {res.authorizationUser.map((auth, ind) => {
-                  return (
-                    <div key={ind}>
-                      {auth.includes(userId) ? (
-                        <button
-                          className="btn"
-                          onClick={() => {
-                            Navigate("/enroll");
-                            localStorage.setItem("enroll", res._id);
-                          }}
-                        >
-                          Start
-                        </button>
-                      ) : (
-                        <button className="subsc-btn btn">Subscribe Now</button>
-                      )}
-                    </div>
-                  );
-                })}
+                <div key={ind}>
+                  {res.authorizationUser.includes(userId) ? (
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        Navigate("/enroll");
+                        localStorage.setItem("enroll", res._id);
+                      }}
+                    >
+                      Start
+                    </button>
+                  ) : (
+                    <button className="subsc-btn btn">Subscribe Now</button>
+                  )}
+                </div>
               </p>
             </div>
           </div>

@@ -6,11 +6,14 @@
     color: white;
     flex-wrap: wrap;
 }
-.fa-brands  {
+.fa-solid  {
+    transition: 0.3s;
+}
+.fa-brands {
     padding: 10px;
     transition: 0.3s ;
 }
-.fa-brands:hover {
+.fa-brands:hover ,.fa-solid:hover{
     cursor: pointer;
     font-size: large;
 }
