@@ -2,12 +2,19 @@ import "./style.css";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import axios from "axios";
-import YouTube from 'react-youtube';
-
+import YouTube from "react-youtube";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Popup from "reactjs-popup";
 const Enroll = () => {
   const opts = {
-    height: '390',
-    width: '640',
+    height: "390",
+    width: "640",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
@@ -31,55 +38,63 @@ const Enroll = () => {
         },
       })
       .then((result) => {
+        console.log(result.data.result);
         setCourseEnroll(result.data.result);
+        // setCourseInfo(result.data.result)
       })
       .catch((err) => {
         console.log(err);
       });
-
-
-
-      
   }, []);
   return (
     <div className="enroll">
-      <button onClick={() => Navigate(-1)} className="enrollbtn">
+      <Button color="error" onClick={() => Navigate(-1)} className="enrollbtn">
         Go Back
-      </button>
+      </Button>
       <div className="video-section">
         {courseEnroll.map((result, ind) => {
           return (
             <div key={ind}>
               {result.order.includes(1) ? (
                 <div>
-                  {/* <iframe
-                    className="primary"
-                    width="853"
-                    height="480"
-                    src={result.url}
-                
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    
-                  ></iframe> */}
-                  <YouTube  className="primary" videoId={"dkc6Ogdq74I?si=0i2Rk6D38XmYu6EU"}   />
-
+                  <YouTube className="primary" videoId={result.url} />
                 </div>
               ) : (
-                <div key={ind}>
-                  {/* <iframe
-                  onClick={() => {
-                    console.log("g");
-                  }}
-                    className="secondry"
-                    width="853"
-                    height="480"
-                    src={result.url}
-                   
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    
-                  ></iframe> */}
-                   <YouTube  className="secondry" videoId={result.url}   />
-                </div>
+                <Container>
+                  {courseEnroll.map((res, ind) => {
+                    return (
+                      <Card sx={{ minWidth: 275 }}>
+                        <CardContent>
+                          <Typography
+                            sx={{ fontSize: 14 }}
+                            color="text.secondary"
+                            gutterBottom
+                          >
+                            video {ind}
+                          </Typography>
+                          <Typography variant="h5" component="div"></Typography>
+                          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            npm
+                          </Typography>
+                          <Typography variant="body2">
+                            well meaning and kindly.
+                            <br />
+                            {'"a benevolent smile"'}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Popup
+                            trigger={<Button> View</Button>}
+                            position="right top"
+                          >
+                            <YouTube className="primary" videoId={result.url} />
+                          </Popup>
+                      
+                        </CardActions>
+                      </Card>
+                    );
+                  })}
+                </Container>
               )}
             </div>
           );

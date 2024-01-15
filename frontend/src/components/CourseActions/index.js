@@ -14,9 +14,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const CourseActions = () => {
-  const { token ,Navigate} = useContext(UserContext);
+  const { token, Navigate } = useContext(UserContext);
   const [category, setCategory] = useState([]);
 
+  const userId = localStorage.getItem("userId");
   const [selectCourse, setSelectedCategory] = useState([]);
 
   useEffect(() => {
@@ -40,7 +41,6 @@ const CourseActions = () => {
         }
       )
       .then((res) => {
-        console.log(res.data.result);
         setSelectedCategory(res.data.result);
       })
       .catch((err) => {
@@ -48,20 +48,15 @@ const CourseActions = () => {
       });
   };
 
-  const deleteProductByid = (courseId ) => {
+  const deleteProductByid = (courseId) => {
     axios
-      .delete(
-        `http://localhost:5000/course/deleteById/${courseId}`,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .delete(`http://localhost:5000/course/deleteById/${courseId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
-        console.log(res);
-        Navigate('/instructor')
-       
+        Navigate("/instructor");
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +74,12 @@ const CourseActions = () => {
             pb: 6,
           }}
         >
+         
           <Container maxWidth="sm">
+          <Button onClick={() => {
+                Navigate(-1)
+                
+            }} color="error"> back</Button>
             <Typography
               component="h1"
               variant="h2"
@@ -112,7 +112,7 @@ const CourseActions = () => {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
+     
           <Grid container spacing={4}>
             {selectCourse.map((result, ind) => (
               <Grid item key={ind} xs={12} sm={6} md={4}>
@@ -138,11 +138,18 @@ const CourseActions = () => {
                     <Typography>{result.description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => {
-                        deleteProductByid(result._id)
-                        console.log("hello");
-                    }} color="error" size="small">Delete</Button>
-                    <Button  color="secondary" size="small">Edit</Button>
+                    <Button
+                      onClick={() => {
+                        deleteProductByid(result._id);
+                      }}
+                      color="error"
+                      size="small"
+                    >
+                      Delete
+                    </Button>
+                    <Button color="secondary" size="small">
+                      Edit
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
