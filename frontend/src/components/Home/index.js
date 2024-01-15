@@ -66,7 +66,7 @@ const Home = () => {
         </div>
       </div>
       <div className="center">
-        <div class="pagination">
+        <div className="pagination">
           {page.map((page, ind) => {
             return (
               <p
@@ -78,7 +78,6 @@ const Home = () => {
               >
                 {page}
               </p>
-              
             );
           })}
         </div>

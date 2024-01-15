@@ -11,3 +11,16 @@ padding: 30px;
     float: right;
     padding-right: 30px;
 }
+.enrollbtn {
+    margin: 30px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    transition: 0.3s;
+    background-color: red;
+    color: white;
+}
+.enrollbtn:hover{
+    cursor: pointer;
+    background-color: rgb(177, 0, 0);
+}
