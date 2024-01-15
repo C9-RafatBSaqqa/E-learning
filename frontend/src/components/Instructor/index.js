@@ -1,12 +1,12 @@
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 const Instructor = () => {
-    return (
-       <div>
-         <Button variant="text">Text</Button>
-         <Button variant="contained">Contained</Button>
+  return (
+    <div>
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>
-       </div>
-    );
-}
+    </div>
+  );
+};
 
-export default Instructor
+export default Instructor;

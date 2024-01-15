@@ -16,6 +16,7 @@ const Enroll = () => {
         },
       })
       .then((result) => {
+        console.log(result);
         setCourseEnroll(result.data.result);
       })
       .catch((err) => {
@@ -28,7 +29,11 @@ const Enroll = () => {
       {courseEnroll.map((result, ind) => {
         return (
           <div key={ind}>
-           <iframe width="853" height="480" src={result.url} title="Nightcore (lyrics) alone [Alan Walker]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            {result.order.includes(1)?<div>
+              <iframe className='primary' width="853" height="480" src={result.url}  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>: <div> <iframe className='secondry' width="853" height="480" src={result.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>}
+          
             {result.order}
           </div>
         );

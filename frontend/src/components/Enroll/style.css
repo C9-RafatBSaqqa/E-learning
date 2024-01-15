@@ -1,5 +1,13 @@
 .video-section {
     display: grid;
-    grid-template-columns: auto auto;
-
+    grid-template-columns: auto ;
+}
+.primary {
+padding: 30px;
+}
+.secondry {
+    width: 300px;
+    height: 300px;
+    float: right;
+    padding-right: 30px;
 }
