@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const CourseActions = () => {
-  const { token } = useContext(UserContext);
+  const { token ,Navigate} = useContext(UserContext);
   const [category, setCategory] = useState([]);
 
   const [selectCourse, setSelectedCategory] = useState([]);
@@ -42,6 +42,26 @@ const CourseActions = () => {
       .then((res) => {
         console.log(res.data.result);
         setSelectedCategory(res.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteProductByid = (courseId ) => {
+    axios
+      .delete(
+        `http://localhost:5000/course/deleteById/${courseId}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        Navigate('/instructor')
+       
       })
       .catch((err) => {
         console.log(err);
@@ -118,7 +138,10 @@ const CourseActions = () => {
                     <Typography>{result.description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button  color="error" size="small">Delete</Button>
+                    <Button onClick={() => {
+                        deleteProductByid(result._id)
+                        console.log("hello");
+                    }} color="error" size="small">Delete</Button>
                     <Button  color="secondary" size="small">Edit</Button>
                   </CardActions>
                 </Card>
