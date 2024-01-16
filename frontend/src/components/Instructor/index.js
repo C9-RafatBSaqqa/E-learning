@@ -6,9 +6,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { UserContext } from "../../App";
+import Button from '@mui/material/Button';
+
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 
 const Instructor = () => {
@@ -18,7 +22,37 @@ const Instructor = () => {
   return (
     <div>
       <Container>
-        <TableContainer component={Paper}>
+      <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              Welcome Instructor
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              You can Edit, Update, Delete and Create new Course
+            </Typography>
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+             
+            </Stack>
+          </Container>
+        </Box>
+        <TableContainer sx={{ m: 3 }} component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -59,12 +93,14 @@ const Instructor = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  Upload Video
+                  Course
                 </TableCell>
                 <TableCell align="right">
-                  {" "}
-                  <Button variant="outlined" color="success">
-                    Action
+                  
+                  <Button onClick={() => {
+                    Navigate('/CreateCourse')
+                  }} variant="outlined" color="success">
+                    Create
                   </Button>
                 </TableCell>
               </TableRow>

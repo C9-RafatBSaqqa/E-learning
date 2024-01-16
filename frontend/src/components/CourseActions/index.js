@@ -87,6 +87,7 @@ const CourseActions = () => {
             >
               List of category
             </Typography>
+            
             <Stack
               sx={{ pt: 4 }}
               direction="row"

@@ -13,6 +13,7 @@ import Instructor from "./components/Instructor";
 import Error from "./components/Error";
 import CourseActions from "./components/CourseActions";
 import UpdateCourse from "./components/UpdateCourse";
+import CreateCourse from "./components/CreateCourse";
 export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
@@ -33,6 +34,7 @@ function App() {
        {instructor && <Route path="/instructor" element={<Instructor />} /> }
        <Route path="/courseActions" element={<CourseActions />} />
        <Route path="/UpdateCourse" element={<UpdateCourse />} />
+       <Route path="/CreateCourse" element={<CreateCourse />} />
 
         <Route path={"*"} element= {<Error/>}/>
       </Routes>
