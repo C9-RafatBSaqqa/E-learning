@@ -36,8 +36,22 @@ const Instructor = () => {
                 <TableCell align="right">
                   <Button onClick={()=> {
                     Navigate('/courseActions')
-                  }} variant="outlined" color="success">
-                    Action
+                  }} variant="outlined" color="error">
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  Course
+                </TableCell>
+                <TableCell align="right">
+                  <Button onClick={()=> {
+                    Navigate('/UpdateCourse')
+                  }} variant="outlined" color="info">
+                    Edit
                   </Button>
                 </TableCell>
               </TableRow>

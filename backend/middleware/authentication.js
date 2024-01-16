@@ -10,7 +10,7 @@ const authentication = (req,res,next) => {
             } else {
                 res.status().json({
                     success:false,
-                    message:"Token invalid or expires "
+                    message:error
                 })
             }
          })

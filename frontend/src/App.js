@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Instructor from "./components/Instructor";
 import Error from "./components/Error";
 import CourseActions from "./components/CourseActions";
+import UpdateCourse from "./components/UpdateCourse";
 export const UserContext = createContext();
 function App() {
   const Navigate = useNavigate();
@@ -31,7 +32,7 @@ function App() {
         <Route path="/enroll" element={<Enroll />} />
        {instructor && <Route path="/instructor" element={<Instructor />} /> }
        <Route path="/courseActions" element={<CourseActions />} />
-
+       <Route path="/UpdateCourse" element={<UpdateCourse />} />
 
         <Route path={"*"} element= {<Error/>}/>
       </Routes>

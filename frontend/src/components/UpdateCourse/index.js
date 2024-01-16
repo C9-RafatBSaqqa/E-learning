@@ -11,11 +11,34 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
-const CourseActions = () => {
+import TextField from '@mui/material/TextField';
+const UpdateCourse = () => {
+  const [title, setTitle] = useState(" ");
+  const [description, setDescription] = useState(" ");
+  const [price, setPrice] = useState(0);
+  const updateProductByid = (courseId) => {
+    const update = {
+      title,
+      description,
+      price
+    }
+    axios
+      .put(`http://localhost:5000/course/updateCourse/${courseId}`,update, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const { token, Navigate } = useContext(UserContext);
   const [category, setCategory] = useState([]);
 
+  const courseId = localStorage.getItem("courseId");
   const [selectCourse, setSelectedCategory] = useState([]);
 
   useEffect(() => {
@@ -46,21 +69,6 @@ const CourseActions = () => {
       });
   };
 
-  const deleteProductByid = (courseId) => {
-    axios
-      .delete(`http://localhost:5000/course/deleteById/${courseId}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        Navigate("/instructor");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
       <main>
@@ -72,12 +80,16 @@ const CourseActions = () => {
             pb: 6,
           }}
         >
-         
           <Container maxWidth="sm">
-          <Button onClick={() => {
-                Navigate(-1)
-                
-            }} color="error"> back</Button>
+            <Button
+              onClick={() => {
+                Navigate(-1);
+              }}
+              color="error"
+            >
+              {" "}
+              back
+            </Button>
             <Typography
               component="h1"
               variant="h2"
@@ -110,7 +122,6 @@ const CourseActions = () => {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-     
           <Grid container spacing={4}>
             {selectCourse.map((result, ind) => (
               <Grid item key={ind} xs={12} sm={6} md={4}>
@@ -130,23 +141,28 @@ const CourseActions = () => {
                     image={result.image}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {result.title}
-                    </Typography>
-                    <Typography>{result.description}</Typography>
+                  <TextField onChange={(e) => {
+                      setTitle(e.target.value)                   
+                  }} id="standard-basic" type="text" label= {result.title} variant="standard" />
+                     
+                  <TextField type="text"  onChange={(e) => {
+                    setDescription(e.target.value)
+                  }} id="standard-basic" label= {result.description} variant="standard" />
+                  <TextField type="number" id="standard-basic" label= {result.price}  onChange={(e) => {
+                    setPrice(e.target.value)
+                  }} variant="standard" />
                   </CardContent>
+                  
                   <CardActions>
-                    <Button
-                      onClick={() => {
-                        deleteProductByid(result._id);
-                      }}
-                      color="error"
-                      size="small"
-                    >
-                      Delete
+                    
+                    <Button onClick={() => {
+                      updateProductByid(result._id)
+                    }} color="success" size="small">
+                      Update
                     </Button>
-                   
+                    
                   </CardActions>
+                  
                 </Card>
               </Grid>
             ))}
@@ -157,4 +173,4 @@ const CourseActions = () => {
   );
 };
 
-export default CourseActions;
+export default UpdateCourse;
