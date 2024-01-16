@@ -13,10 +13,11 @@ import TextField from "@mui/material/TextField";
 const CreateCourse = () => {
   const { token, Navigate } = useContext(UserContext);
   const [category, setCategory] = useState([]);
-  const [title, setTitle] = useState(" ");
-  const [image, setImage] = useState();
-  const [ok, setOk] = useState();
-  const [error, setError] = useState();
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [ok, setOk] = useState("");
+  const [error, setError] = useState("");
+  const [categortId, setcategortId] = useState("");
 
   const [description, setDescription] = useState(" ");
   const [price, setPrice] = useState(0);
@@ -36,7 +37,7 @@ const CreateCourse = () => {
       title,
       description,
       price,
-      category: localStorage.getItem("categoryId"),
+      category: categortId,
       owner: localStorage.getItem("userId"),
       image
     };
@@ -51,7 +52,8 @@ const CreateCourse = () => {
         setOk(result.data.message)
       })
       .catch((err) => {
-        setError(err.response.data.error.message)
+        console.log(err);
+        setError(err.response.data.message)
       });
   };
 
@@ -106,8 +108,7 @@ const CreateCourse = () => {
                   <Button
                     key={ind}
                     onClick={() => {
-                      // getProductByCategory(result._id);
-                      localStorage.setItem("categoryId", result._id);
+                      setcategortId(result._id);
                     }}
                     variant="contained"
                   >
@@ -151,6 +152,7 @@ const CreateCourse = () => {
                     fullWidth
                     label="Price"
                     name="Price"
+                    type="number"
                     onChange={(e) => {
                       setPrice(e.target.value);
                     }}
@@ -182,10 +184,9 @@ const CreateCourse = () => {
                   <TextField
                     required
                     fullWidth
-                    value={localStorage.getItem("categoryId")}
+                    value={categortId}
                     disabled
-                    id="password"
-                    autoComplete="new-password"
+              
                   />
                 </Grid>
               </Grid>
@@ -201,12 +202,8 @@ const CreateCourse = () => {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-           
                 <Button color="success">{ok}</Button>
-
-         
                 <Button color="error">{error}</Button>
-                
                 </Grid>
               </Grid>
             </Box>
