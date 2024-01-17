@@ -87,7 +87,9 @@ const CourseActions = () => {
             >
               List of category
             </Typography>
-            
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              Delete a course by selecting it from the category showing below.
+            </Typography>
             <Stack
               sx={{ pt: 4 }}
               direction="row"

@@ -14,13 +14,31 @@ const CreateCourse = () => {
   const { token, Navigate } = useContext(UserContext);
   const [category, setCategory] = useState([]);
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
   const [ok, setOk] = useState("");
   const [error, setError] = useState("");
   const [categortId, setcategortId] = useState("");
 
   const [description, setDescription] = useState(" ");
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
+  const uploadImage = () => {
+    console.log(image);
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "luipbyrc");
+    data.append("cloud_name", "dwenerokk");
+    fetch("https://api.cloudinary.com/v1_1/dwenerokk/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.url);
+        setUrl(data.url);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     axios
       .get("http://localhost:5000/category/getAllCategory")
@@ -39,7 +57,7 @@ const CreateCourse = () => {
       price,
       category: categortId,
       owner: localStorage.getItem("userId"),
-      image
+      image:url,
     };
     axios
       .post(`http://localhost:5000/course/createNewCourse`, create, {
@@ -49,11 +67,11 @@ const CreateCourse = () => {
       })
       .then((result) => {
         console.log(result);
-        setOk(result.data.message)
+        setOk(result.data.message);
       })
       .catch((err) => {
         console.log(err);
-        setError(err.response.data.message)
+        setError(err.response.data.message);
       });
   };
 
@@ -78,7 +96,7 @@ const CreateCourse = () => {
               {" "}
               back
             </Button>
-            
+
             <Typography
               component="h1"
               variant="h2"
@@ -170,24 +188,21 @@ const CreateCourse = () => {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    label="Image Path"
-                    name="Image Path"
-                    onChange={((e) => {
-                      setImage(e.target.value)
-                    })}
-                  />
+                  <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  ></input>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      uploadImage();
+                    }}
+                  >
+                    Upload
+                  </button>
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    value={categortId}
-                    disabled
-              
-                  />
+                  <TextField required fullWidth value={categortId} disabled />
                 </Grid>
               </Grid>
               <Button
@@ -202,8 +217,8 @@ const CreateCourse = () => {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                <Button color="success">{ok}</Button>
-                <Button color="error">{error}</Button>
+                  <Button color="success">{ok}</Button>
+                  <Button color="error">{error}</Button>
                 </Grid>
               </Grid>
             </Box>

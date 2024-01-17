@@ -29,6 +29,8 @@ const Enroll = () => {
   const { token, Navigate } = useContext(UserContext);
   const enroll = localStorage.getItem("enroll");
   const [courseEnroll, setCourseEnroll] = useState([]);
+  const [courseTitle, setCourseTitle] = useState("");
+  const [courseDescription, setCourseDescription] = useState("");
 
   useEffect(() => {
     axios
@@ -38,9 +40,10 @@ const Enroll = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.result);
+        console.log();
         setCourseEnroll(result.data.result);
-        // setCourseInfo(result.data.result)
+        setCourseTitle(result.data.result[0].courseId.title);
+        setCourseDescription(result.data.result[0].courseId.description);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +66,7 @@ const Enroll = () => {
                 <Container>
                   {courseEnroll.map((res, ind) => {
                     return (
-                      <Card sx={{ minWidth: 275 }}>
+                      <Card key={ind} sx={{ minWidth: 275 }}>
                         <CardContent>
                           <Typography
                             sx={{ fontSize: 14 }}
@@ -74,12 +77,11 @@ const Enroll = () => {
                           </Typography>
                           <Typography variant="h5" component="div"></Typography>
                           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            npm
+                            {courseDescription}
                           </Typography>
                           <Typography variant="body2">
-                            well meaning and kindly.
+                            {courseTitle}
                             <br />
-                            {'"a benevolent smile"'}
                           </Typography>
                         </CardContent>
                         <CardActions>
@@ -89,7 +91,6 @@ const Enroll = () => {
                           >
                             <YouTube className="primary" videoId={result.url} />
                           </Popup>
-                      
                         </CardActions>
                       </Card>
                     );

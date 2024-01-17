@@ -54,6 +54,15 @@ const Course = () => {
           }}
         >
           <Container maxWidth="sm">
+          <Button
+              onClick={() => {
+                Navigate(-1);
+              }}
+              color="error"
+            >
+              {" "}
+              back
+            </Button>
             <Typography
               component="h1"
               variant="h2"
