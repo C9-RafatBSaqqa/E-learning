@@ -36,10 +36,12 @@ const Home = () => {
         </p>
         <input className="search-home" type="search" placeholder=" Search..." />
       </div>
+      <h1>ggg</h1>
       <div className="home-sec">
         <h1 className="h1-sec-home">Our Category</h1>
         <p className="par-sec-home">The world Largest selection of course</p>
       </div>
+      
       <div className="sect-card">
         <div className="card">
           {currentCategory.map((res, ind) => {
