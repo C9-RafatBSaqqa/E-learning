@@ -76,6 +76,7 @@
   /* Start Pagination code */
   .center {
     text-align: center;
+    background-color: rgba(234, 233, 233, 0.23);
   }
   
 .pagination {

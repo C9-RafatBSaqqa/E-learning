@@ -4,7 +4,7 @@ import axios from "axios";
 import { UserContext } from "../../App";
 
 const Home = () => {
-  const { Navigate } = useContext(UserContext);
+  const { Navigate ,token} = useContext(UserContext);
   const [category, setCategory] = useState([]);
   let page = [];
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,11 @@ const Home = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/getAllCategory")
+      .get("http://localhost:5000/category/getAllCategory", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((result) => {
         setCategory(result.data.result);
       })
@@ -36,12 +40,10 @@ const Home = () => {
         </p>
         <input className="search-home" type="search" placeholder=" Search..." />
       </div>
-      <h1>ggg</h1>
       <div className="home-sec">
         <h1 className="h1-sec-home">Our Category</h1>
         <p className="par-sec-home">The world Largest selection of course</p>
       </div>
-      
       <div className="sect-card">
         <div className="card">
           {currentCategory.map((res, ind) => {
