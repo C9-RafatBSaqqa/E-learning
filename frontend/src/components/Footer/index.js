@@ -12,7 +12,7 @@ const Footer = () => {
       <div>
       <p className="social-media"><i className="fa-brands fa-facebook fa-lg" style={{color: "#0b61c4",}}></i>
       <i className="fa-brands fa-instagram fa-lg" style={{color: "#eb005e",}}></i>
-      <i className="fa-brands fa-github fa-lg"style={{color: "#000000",}}></i>
+      <i className="fa-brands fa-github fa-lg"></i>
       <i className="fa-brands fa-snapchat fa-lg" style={{color: "#FFD43B"}}></i></p>
       </div>
     </div>

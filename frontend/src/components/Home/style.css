@@ -29,6 +29,7 @@
     margin-top: 50px;
     margin-bottom: 10px;
     font-size: 45px;
+    color: #bc4b4b;
   }
   .par-sec-home {
     margin-bottom: 50px;
@@ -38,7 +39,7 @@
 
     /* Start page card */
   .sect-card {
-    background-color:rgba(234, 233, 233, 0.23);
+    background-color:#eeeeee;
     padding: 40px;
   }
   .card {
@@ -67,16 +68,22 @@
   }
   .cate-title {
     padding: 10px;
+    
+  }
+  .cate-btn {
+    color: white;
+    background-color: #140e00;
   }
   .cate-btn:hover {
-    background-color: rgb(253, 242, 229);
+    background-color: rgb(0, 0, 0);
+    color: rgb(188,75,75);
   }
     /* End page card */
     
   /* Start Pagination code */
   .center {
     text-align: center;
-    background-color: rgba(234, 233, 233, 0.23);
+    background-color: #eeeeee;
   }
   
 .pagination {
@@ -92,7 +99,7 @@
 }
 
 .pagination p.active {
-  background-color: rgb(57, 90, 130);
+  background-color:#bc4b4b;
   color: white;
   border-radius: 5px;
 }

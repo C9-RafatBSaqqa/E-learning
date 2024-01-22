@@ -5,6 +5,7 @@
     gap: 100px;
     padding: 15px 20px;
     flex-wrap: wrap;
+    
 }
 .logged-out-list {
     display: flex;
@@ -12,9 +13,10 @@
     gap: 100px;
     padding: 15px 20px;
     flex-wrap: wrap;
+    
 }
 .navbar {
-    background-color: rgb(50, 67, 73);
+    background-color: #140e00;
 }
 .home-link, .logout-link , .register-link, .login-link, .aboutUs-link{
     text-decoration: none;
@@ -22,8 +24,8 @@
     color: white;
 }
 .home-link, .logout-link , .register-link:hover, .login-link, .aboutUs-link:hover {
-    background-color: rgb(57, 90, 130);
-    color: white;
+    background-color: #000000;
+    color: #bc4b4b;
     transition: 0.5s;
 }
 .home-link{
@@ -32,7 +34,7 @@
 .login-link {
     padding: 10px 25px;
     border-radius: 50px;
-    background-color: rgb(69, 69, 219);
+    background-color: #0000ff;
     color: white;
     transition: 0.3s;
 }
@@ -47,8 +49,11 @@
     transition: 0.3s;
 }
 .logout-link:hover {
-    background-color: rgb(194, 59, 59);
+    background-color: #bc4b4b;
 }
 .brand {
-    color: white;
+    color: white
+}
+.brand:hover {
+    cursor: pointer;
 }

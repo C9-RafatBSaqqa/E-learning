@@ -8,7 +8,7 @@ const authorization = require('../middleware/authorization')
 categoryRouter.post('/createNewCategory',authentication,authorization('CREATE_CATEGORY'),createNewCategory)
 
 // function 2 GET
-categoryRouter.get('/getAllCategory',authentication,getAllCategory)
+categoryRouter.get('/getAllCategory',getAllCategory)
 
 
 module.exports = categoryRouter

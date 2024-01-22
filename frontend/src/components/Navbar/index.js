@@ -19,14 +19,17 @@ const Navbar = () => {
             <Link className="home-link" to={"/home"}>
               Home
             </Link>
-            <Link className="aboutUs-link"  to={"/#about"}>
+            <Link className="aboutUs-link" to={"/#about"}>
               About Us
+            </Link>
+            <Link className="aboutUs-link" to={"/#contact"}>
+              Contact
             </Link>
           </div>
           <div className="logged-out">
-          <Link onClick={logout} className="logout-link" to={"/login"}>
-            Logout
-          </Link>
+            <Link onClick={logout} className="logout-link" to={"/"}>
+              Logout
+            </Link>
           </div>
         </div>
       ) : (
@@ -35,11 +38,11 @@ const Navbar = () => {
             <h3>Academia</h3>
           </div>
           <div>
-            <Link className="home-link" to={"/home"}>
-              Home
-            </Link>
-            <Link className="aboutUs-link"  hrefLang="#about">
+            <Link className="aboutUs-link" to={"/"}>
               About Us
+            </Link>
+            <Link className="aboutUs-link" to={"/"}>
+              Contact
             </Link>
             <Link className="register-link" to={"/register"}>
               Register

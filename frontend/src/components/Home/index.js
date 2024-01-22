@@ -41,8 +41,8 @@ const Home = () => {
         <input className="search-home" type="search" placeholder=" Search..." />
       </div>
       <div className="home-sec">
-        <h1 className="h1-sec-home">Our Category</h1>
-        <p className="par-sec-home">The world Largest selection of course</p>
+        <h1 className="h1-sec-home">Our Categories</h1>
+        <p className="par-sec-home">The world largest selection of courses</p>
       </div>
       <div className="sect-card">
         <div className="card">

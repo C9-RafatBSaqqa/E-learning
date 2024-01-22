@@ -6,6 +6,10 @@
   }
   .about-section {
     padding-bottom: 20px;
+    color: #bc4b4b;
+  }
+  .app-prov {
+    color: #bc4b4b;
   }
   .text-AboutUs{
     width: 25%;
@@ -36,17 +40,20 @@
     justify-content: space-around;
     text-align: center;
     flex-wrap: wrap;
+    background-color: #eeeeee;
+    padding: 40px 0;
   }
   .how-section {
     text-align: center;
     margin: 30px;
+    color:#bc4b4b
   }
   .logo {
       width: 50px;
       height: 50px;
-      border: 4px solid #fff;
-      background: #f16821;
-      color: #fff;
+      border: 4px solid #ffffff;
+      background:  #bc4b4b;
+      color: #ffffff	;
       line-height: 44px;
       font-weight: 300;
       display: inline-block;
@@ -61,8 +68,6 @@
   .Item {
     width: 20%;
     text-align: left;
-    /* padding: 10px; */
-   
   }
   
   .description {
@@ -70,10 +75,70 @@
     color: #4d4d4d;
     font-weight: 300;
     font-size: 1rem;
-    
   }
   .success-par {
     margin-top: 40px;
+  }
+  .app-ContactUs {
+    text-align: center;
+    padding: 30px;
+  
+  }
+  .ContactUs-section {
+    color: #bc4b4b;
+    line-height: 1.7;
+  }
+  .display-flex {
+    display: flex;
+    justify-content: space-around;
+    gap: 4px;
+    line-height: 1.7;
+    font-weight: 300;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    padding: 30px;
+  }
+  .my-information {
+    background-color: #eeeeee;
+    padding: 30px ;
+    text-align: left;
+ 
+    border-radius: 6px;
+  }
+  .col {
+    color:#bc4b4b
+  }
+  .coladd {
+    color: #4d4d4d;
+  }
+  .info-title {
+    margin-top: 20px;
+  }
+  .app-contact-form {
+    border-radius: 6px;
+    background-color: #eeeeee;
+    padding: 30px ;
+    /* width: 70%; */
+  }
+  .name {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+  }
+  .message {
+    background-color: #bc4b4b;
+    color: white;
+  }
+  .input {
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+  }
+  .input1 {
+    margin-right: 25px;
   }
   @media screen and (max-width: 702px) {
     .text-AboutUs{
@@ -82,5 +147,8 @@
     .Item {
       width: 100%;
       
+    }
+    .input1 {
+      margin-right: 0;
     }
   }
