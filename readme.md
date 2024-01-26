@@ -4,7 +4,7 @@
  </a>
 </p>
 
-<h3 align="center">Project Title
+<h3 align="center">Academia
 </h3>
 
 ---
@@ -29,7 +29,7 @@
 
 
 
-Ex. Are you looking for a quick and easy way to action, action, and action? The **(Academia)** is the greatest and most accurate application to do this for you. It helps you to **(Create personal account, 
+Ex. Are you looking for a quick and easy way to action, action, and action? The **(Academia)** is the greatest and most accurate application to do this for you. It helps you to **(Create a personal account, 
 Enroll a course)**.
 The **(Academia)** provides a simple design to ensure having the best user experience.
 
