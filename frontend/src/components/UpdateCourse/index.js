@@ -23,7 +23,7 @@ const UpdateCourse = () => {
       price
     }
     axios
-      .put(`http://localhost:5000/course/updateCourse/${courseId}`,update, {
+      .put(`https://e-learning-wppf.onrender.com/course/updateCourse/${courseId}`,update, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -43,7 +43,7 @@ const UpdateCourse = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/getAllCategory")
+      .get("https://e-learning-wppf.onrender.com/category/getAllCategory")
       .then((result) => {
         setCategory(result.data.result);
       })
@@ -54,7 +54,7 @@ const UpdateCourse = () => {
   const getProductByCategory = (categoryId = "65971c6f831fe72e7fecf48d") => {
     axios
       .get(
-        `http://localhost:5000/course/getAllCourseByCategory/${categoryId}`,
+        `https://e-learning-wppf.onrender.com/course/getAllCourseByCategory/${categoryId}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

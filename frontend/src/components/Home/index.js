@@ -14,7 +14,7 @@ const Home = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/getAllCategory", {
+      .get("https://e-learning-wppf.onrender.com/category/getAllCategory", {
         headers: {
           authorization: `Bearer ${token}`,
         },

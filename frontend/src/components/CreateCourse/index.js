@@ -41,7 +41,7 @@ const CreateCourse = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/getAllCategory")
+      .get("https://e-learning-wppf.onrender.com/category/getAllCategory")
       .then((result) => {
         setCategory(result.data.result);
       })
@@ -60,7 +60,7 @@ const CreateCourse = () => {
       image:url,
     };
     axios
-      .post(`http://localhost:5000/course/createNewCourse`, create, {
+      .post(`https://e-learning-wppf.onrender.com/course/createNewCourse`, create, {
         headers: {
           authorization: `Bearer ${token}`,
         },

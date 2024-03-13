@@ -131,7 +131,7 @@ const Register = () => {
               role: "6595c8431aa2ed8204c495c2",
             };
             axios
-              .post("http://localhost:5000/user/register", userInfo)
+              .post("https://e-learning-wppf.onrender.com/user/register", userInfo)
               .then((res) => {
                 user.Navigate("/login");
                 console.log(res);

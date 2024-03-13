@@ -20,7 +20,7 @@ const CourseActions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/getAllCategory")
+      .get("https://e-learning-wppf.onrender.com/category/getAllCategory")
       .then((result) => {
         setCategory(result.data.result);
       })
@@ -31,7 +31,7 @@ const CourseActions = () => {
   const getProductByCategory = (categoryId = "65971c6f831fe72e7fecf48d") => {
     axios
       .get(
-        `http://localhost:5000/course/getAllCourseByCategory/${categoryId}`,
+        `https://e-learning-wppf.onrender.com/course/getAllCourseByCategory/${categoryId}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ const CourseActions = () => {
 
   const deleteProductByid = (courseId) => {
     axios
-      .delete(`http://localhost:5000/course/deleteById/${courseId}`, {
+      .delete(`https://e-learning-wppf.onrender.com/course/deleteById/${courseId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

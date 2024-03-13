@@ -29,7 +29,7 @@ const Course = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/course/getAllCourseByCategory/${category}`, {
+      .get(`https://e-learning-wppf.onrender.com/course/getAllCourseByCategory/${category}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
