@@ -20,11 +20,6 @@ const Register = () => {
     <div className="inputform-reg">
       <div className="desc-login">
         <h1>Learn From The Expert</h1>
-        <p className="parg-login">
-          Lore LoreLoreLorepLoreLoreLoreLoreLoreLoreLoreLo
-          <br />
-          reLoreLoreLore
-        </p>
         <button className="subsc-btn btn">Subscribe Now</button>
       </div>
 
